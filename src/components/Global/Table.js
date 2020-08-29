@@ -20,27 +20,29 @@ const Table = ({
       <TableHead>
         <TableRow>
           <TableCell colSpan={99}>
-            <Grid container alignItems="center" justify="space-between">
+            <Grid container alignItems="center">
+              <Grid item xs={1}>
+                {expandable && (
+                  <Tooltip title="Expand or collapse this table">
+                    <Grid item xs={1}>
+                      <IconButton Icon={expanded ? ExpandLess : ExpandMore} onClick={() => setExpanded(!expanded)} />
+                    </Grid>
+                  </Tooltip>
+                )}
+              </Grid>
+
               <Grid item>
                 <Typography variant={titleVariant}>{title}</Typography>
               </Grid>
-
-              {expandable && (
-                <Tooltip title="Expand or collapse this table">
-                  <Grid item xs={1}>
-                    <IconButton Icon={expanded ? ExpandLess : ExpandMore} onClick={() => setExpanded(!expanded)} />
-                  </Grid>
-                </Tooltip>
-              )}
             </Grid>
           </TableCell>
         </TableRow>
         
-        {headers && (
+        {headers && expanded && (
           <TableRow>
-            {headers.map(header => (
-              <TableCell>
-                {header}
+            {headers.map((header, index) => (
+              <TableCell key={index}>
+                <Typography>{header.toUpperCase()}</Typography>
               </TableCell>
             ))}
           </TableRow>

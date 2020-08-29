@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import GamesContainer from "../Games/GamesContainer";
-import { AppBar, Toolbar, IconButton, Typography, Button } from "@material-ui/core";
+import { AppBar, Toolbar } from "@material-ui/core";
+import GameContainer from "../Game/GameContainer";
 
 const Layout = ({ storeAndActions }) => (
   <Fragment>
@@ -10,8 +11,8 @@ const Layout = ({ storeAndActions }) => (
     </AppBar>
 
     <GamesContainer storeAndActions={storeAndActions} />
-    
-    <GamesContainer storeAndActions={storeAndActions} />
+
+    <GameContainer storeAndActions={storeAndActions} />
   </Fragment>
 )
 
